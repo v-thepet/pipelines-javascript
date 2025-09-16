@@ -52,7 +52,7 @@ stages:
               script: |
                 # Modify deployment script based on the app type
                 echo "Starting deployment script run"
-                npm run start $(System.DefaultWorkingDirectory)/drop/*.zip
+                sudo npm run start $(System.DefaultWorkingDirectory)/drop/*.zip
         routeTraffic:
           steps:
           - script: echo routing traffic
