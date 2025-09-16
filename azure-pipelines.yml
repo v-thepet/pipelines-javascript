@@ -52,7 +52,7 @@ stages:
               script: |
                 # Modify deployment script based on the app type
                 echo "Starting deployment script run"
-                cp -r $(System.DefaultWorkingDirectory)/drop/*.zip
+                npm run start $(System.DefaultWorkingDirectory)/drop/*.zip
         routeTraffic:
           steps:
           - script: echo routing traffic
