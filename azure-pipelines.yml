@@ -31,6 +31,9 @@ stages:
     - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       artifact: drop
 
+- stage: Deploy
+  displayName: Deploy stage
+  jobs:  
   - deployment: VMDeploy
     displayName: Web deploy
     environment:
