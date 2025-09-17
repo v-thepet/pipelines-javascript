@@ -53,7 +53,7 @@ jobs:
                 echo "Starting deployment script run"
                 sudo mkdir -p extracted_content
                 sudo unzip $(System.DefaultWorkingDirectory)/drop/*.zip -d extracted_content/
-                cd extracted_content
+                sudo cd extracted_content
                 sudo node server.js
         routeTraffic:
           steps:
