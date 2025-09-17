@@ -4,10 +4,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-stages:
-- stage: Build
-  displayName: Build stage
-  jobs:  
+jobs:  
   - job: Build
     displayName: Build
     steps:
@@ -31,11 +28,10 @@ stages:
     - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       artifact: drop
 
-- stage: Deploy
-  displayName: Deploy stage
-  jobs:  
   - deployment: VMDeploy
     displayName: Web deploy
+    dependsOn: Build
+    condition: succeeded()
     environment:
       name:  linux-qs-js
       resourceType: VirtualMachine
