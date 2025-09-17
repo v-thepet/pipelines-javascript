@@ -55,8 +55,8 @@ stages:
               script: |
                 # Modify deployment script based on the app type
                 echo "Starting deployment script run"
-                unzip $(System.DefaultWorkingDirectory)/drop/*.zip
-                node server.js
+                sudo unzip $(System.DefaultWorkingDirectory)/drop/*.zip
+                sudo node server.js
         routeTraffic:
           steps:
           - script: echo routing traffic
