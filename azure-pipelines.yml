@@ -51,10 +51,10 @@ jobs:
               script: |
                 # Modify deployment script based on the app type
                 echo "Starting deployment script run"
-                mkdir extracted_content
-                unzip $(System.DefaultWorkingDirectory)/drop/*.zip -d extracted_content/
+                sudo mkdir -p extracted_content
+                sudo unzip $(System.DefaultWorkingDirectory)/drop/*.zip -d extracted_content/
                 cd extracted_content
-                node server.js
+                sudo node server.js
         routeTraffic:
           steps:
           - script: echo routing traffic
