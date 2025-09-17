@@ -51,9 +51,7 @@ jobs:
               script: |
                 # Modify deployment script based on the app type
                 echo "Starting deployment script run"
-                sudo mkdir -p extracted_content
-                sudo unzip $(System.DefaultWorkingDirectory)/drop/*.zip -d extracted_content/
-                sudo cd extracted_content
+                sudo unzip '$(Pipeline.Workspace)/drop/*.zip'
                 sudo node server.js
         routeTraffic:
           steps:
