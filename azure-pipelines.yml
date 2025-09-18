@@ -48,8 +48,8 @@ jobs:
           # Modify deployment code based on the app type
           - task: ExtractFiles@1
             inputs:
-             archiveFilePatterns: '$(Pipeline.Workspace)/drop/*.zip'
-             destinationFolder: '$(Pipeline.Workspace)/drop/app/'
+             archiveFilePatterns: '$(Build.ArtifactStagingDirectory)/drop/$(Build.BuildId).zip'
+             destinationFolder: '$(Build.ArtifactStagingDirectory)/app/'
              cleanDestinationFolder: true
              overwriteExistingFiles: false
           - script: sudo node server.js
