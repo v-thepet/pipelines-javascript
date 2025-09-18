@@ -45,14 +45,16 @@ jobs:
           - script: echo initialize, cleanup, backup, install certs
         deploy:
           steps:
-          - task: Bash@3
+          # Modify deployment code based on the app type
+          - task: ExtractFiles@1
             inputs:
-              targetType: 'inline'
-              script: |
-                # Modify deployment script based on the app type
-                echo "Starting deployment script run"
-                sudo unzip '$(Pipeline.Workspace)/drop/*.zip'
-                sudo node server.js
+             archiveFilePatterns: '**/*.zip'
+             destinationFolder: '$(Pipeline.Workspace)/drop/'
+             cleanDestinationFolder: true
+             overwriteExistingFiles: false
+          - script: npm install server.js
+          - script: node server.js
+
         routeTraffic:
           steps:
           - script: echo routing traffic
