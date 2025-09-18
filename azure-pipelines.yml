@@ -46,9 +46,13 @@ jobs:
         deploy:
           steps:
           # Modify deployment code based on the app type
+          - task: UseNode@1
+            inputs:
+             version: '16.x'
+            displayName: 'Install Node.js'
           - task: ExtractFiles@1
             inputs:
-             archiveFilePatterns: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
+             archiveFilePatterns: '$(Pipeline.Workspace)/drop/*.zip'
              destinationFolder: '$(Pipeline.Workspace)/drop/$(Build.BuildId)/'
              cleanDestinationFolder: true
              overwriteExistingFiles: false
