@@ -50,13 +50,20 @@ jobs:
             inputs:
              version: '16.x'
             displayName: 'Install Node.js'
+
+          - task: CopyFiles@2
+            inputs:
+              SourceFolder: '$(Pipeline.Workspace)/drop/'
+              Contents: '$(Build.BuildId).zip'
+              TargetFolder: '$(Build.SourcesDirectory)/app/'
+
           - task: ExtractFiles@1
             inputs:
-             archiveFilePatterns: '$(Pipeline.Workspace)/drop/*.zip'
-             destinationFolder: '$(Pipeline.Workspace)/drop/$(Build.BuildId)/'
+             archiveFilePatterns: '$(Build.SourcesDirectory)/app/$(Build.BuildId).zip'
+             destinationFolder: '$(Build.SourcesDirectory)/app/$(Build.BuildId)/'
              cleanDestinationFolder: true
              overwriteExistingFiles: false
-          - script: sudo cd $(Pipeline.Workspace)/drop/$(Build.BuildId)/
+          - script: sudo cd $(Build.SourcesDirectory)/app/$(Build.BuildId)/
           - script: node server.js
 
         routeTraffic:
