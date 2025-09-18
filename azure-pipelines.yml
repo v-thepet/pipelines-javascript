@@ -67,8 +67,7 @@ jobs:
              destinationFolder: '$(Build.SourcesDirectory)/app/$(Build.BuildId)/'
              cleanDestinationFolder: true
              overwriteExistingFiles: false
-          - script: sudo cd $(Build.SourcesDirectory)/app/$(Build.BuildId)/
-          - script: node server.js
+          - script: sudo node $(Build.SourcesDirectory)/app/$(Build.BuildId)/server.js
 
         routeTraffic:
           steps:
