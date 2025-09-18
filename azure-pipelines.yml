@@ -57,6 +57,10 @@ jobs:
               Contents: '$(Build.BuildId).zip'
               TargetFolder: '$(Build.SourcesDirectory)/app/'
 
+          - script: sudo apt update && sudo apt upgrade
+
+          - script: sudo apt install unzip
+          
           - task: ExtractFiles@1
             inputs:
              archiveFilePatterns: '$(Build.SourcesDirectory)/app/$(Build.BuildId).zip'
