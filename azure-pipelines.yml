@@ -52,7 +52,7 @@ jobs:
              destinationFolder: '$(Pipeline.Workspace)/drop/'
              cleanDestinationFolder: true
              overwriteExistingFiles: false
-          - script: node server.js
+          - script: sudo node server.js
 
         routeTraffic:
           steps:
