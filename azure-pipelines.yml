@@ -52,7 +52,6 @@ jobs:
              destinationFolder: '$(Pipeline.Workspace)/drop/'
              cleanDestinationFolder: true
              overwriteExistingFiles: false
-          - script: npm install server.js
           - script: node server.js
 
         routeTraffic:
