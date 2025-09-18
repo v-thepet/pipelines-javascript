@@ -48,7 +48,7 @@ jobs:
           # Modify deployment code based on the app type
           - task: ExtractFiles@1
             inputs:
-             archiveFilePatterns: '**/*.zip'
+             archiveFilePatterns: '$(Pipeline.Workspace)/drop/*.zip'
              destinationFolder: '$(Pipeline.Workspace)/drop/'
              cleanDestinationFolder: true
              overwriteExistingFiles: false
