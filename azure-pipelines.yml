@@ -63,7 +63,7 @@ jobs:
              cleanDestinationFolder: true
              overwriteExistingFiles: false
 
-          - script: sudo node $(Build.SourcesDirectory)/app/$(Build.BuildId)/server.js
+          - script: sudo /opt/hostedtoolcache/node/16.20.2/x64/bin/node $(Build.SourcesDirectory)/app/$(Build.BuildId)/server.js
 
         routeTraffic:
           steps:
