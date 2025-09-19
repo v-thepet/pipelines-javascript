@@ -63,10 +63,6 @@ jobs:
              cleanDestinationFolder: true
              overwriteExistingFiles: false
 
-          - task: UseNode@1
-            inputs:
-             version: '16.x'
-            displayName: 'Use Node.js'
           - script: sudo node $(Build.SourcesDirectory)/app/$(Build.BuildId)/server.js
 
         routeTraffic:
